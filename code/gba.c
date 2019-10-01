@@ -28,12 +28,10 @@ int randint(int min, int max) {
 }
 
 void setPixel(int x, int y, u16 color) {
-    // TA-TODO: IMPLEMENT
     videoBuffer[y * WIDTH + x] = color;
 }
 
 void drawRectDMA(int x, int y, int width, int height, volatile u16 color) {
-    // TA-TODO: IMPLEMENT
     for (int i = 0; i < height; i++){
         DMA[3].src = &color;
         DMA[3].dst = videoBuffer + OFFSET(y + i, x, WIDTH);
@@ -42,14 +40,12 @@ void drawRectDMA(int x, int y, int width, int height, volatile u16 color) {
 }
 
 void drawFullScreenImageDMA(const u16 *image) {
-    // TA-TODO: IMPLEMENT
     DMA[3].src = image;
     DMA[3].dst = videoBuffer;
     DMA[3].cnt = 240 * 160 | DMA_ON | DMA_DESTINATION_INCREMENT | DMA_SOURCE_INCREMENT;
 }
 
 void drawImageDMA(int x, int y, int width, int height, u16 *image) {
-    // TA-TODO: IMPLEMENT
     for (int i = 0; i < height; i++){
         DMA[3].src = image + 6 * i;
         DMA[3].dst = videoBuffer + OFFSET(y + i, x, WIDTH);
@@ -58,7 +54,6 @@ void drawImageDMA(int x, int y, int width, int height, u16 *image) {
 }
 
 void fillScreenDMA(volatile u16 color) {
-    // TA-TODO: IMPLEMENT
     DMA[3].src = &color;
     DMA[3].dst = videoBuffer;
     DMA[3].cnt = 240 * 160 | DMA_ON | DMA_DESTINATION_INCREMENT | DMA_SOURCE_FIXED;

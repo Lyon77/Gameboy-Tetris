@@ -25,16 +25,6 @@ typedef struct single {
     u16 *image;
 
 
-    /*
-    * TA-TODO: Add any logical elements you need to keep track of in your app.
-    *
-    * For example, for a Snake game, those could be:
-    *
-    * Snake snake;
-    * Food foods[10];
-    * int points;
-    *
-    */
 
 } Block;
 
